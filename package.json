@@ -11,6 +11,6 @@
   "dependencies": {
     "express": "^4.18.1",
     "fs": "^0.0.1-security",
-    "whois": "^2.13.9"
+    "whois-json": "^2.0.4"
   }
 }

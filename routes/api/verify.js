@@ -1,17 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const whois = require('whois');
+const whois = require('whois-json');
 
-router.get('/', function(req, res) {
+router.get('/', async function(req, res) {
      // Get the isp by address
-     whois.lookup("roblox.com", 4, function(err, data){
-        if (err) {
-            res.status(500).send('Error getting isp');
-        } else {
-            res.send(data);
-        }
-
-     });
+     var result = await whois(req.headers['x-forwarded-for'] || req.socket.remoteAddress)
+     console.log(result)
+     res.json(result)
 });
 
 module.exports = router;
