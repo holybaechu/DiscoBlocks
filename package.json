@@ -1,0 +1,16 @@
+{
+  "name": "discoblocks",
+  "version": "0.0.1",
+  "description": "Verify with roblox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "holybaechu",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "fs": "^0.0.1-security",
+    "whois": "^2.13.9"
+  }
+}
