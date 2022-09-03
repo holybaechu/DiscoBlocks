@@ -29,6 +29,9 @@ router.get('/', async function(req, res) {
     result.orgTechRef == 'https://rdap.arin.net/registry/entity/OPERA503-ARIN'
     ){
         console.log("REAL ROBLOX SERVER !@#$!@#!#@!@!");
+        res.json({success: true, message: "Under development"})
+    }else{
+        res.json({success: false, errors: [{message: "This ip is not seems to be allowed to access this api."}]})
     }
 });
 
