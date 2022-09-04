@@ -8,7 +8,8 @@ router.get('/', async function(req, res) {
     if (!usernameToGet) {res.status(400).json({ success: false, errors: [{message: 'username could not be parsed from requset.'}]}) }
 
     if (global.verifyQueue[usernameToGet]) {
-        global.verifyQueue[usernameToGet].createDM(true).send("You are verified!")
+        var dm = await global.verifyQueue[usernameToGet].createDM(true)
+        await dm.send("You are verified!")
         res.json({success: true})
     }else{
         res.status(400).json({ success: false, errors: [{message: 'username is not in the queue.'}]})
