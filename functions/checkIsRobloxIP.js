@@ -2,7 +2,7 @@ const whois = require('whois-json');
 
 module.exports = async function(ip){
     var result = await whois(ip)
-
+    console.log(result)
     if (
     result.availableAt == "https://www.arin.net/resources/registry/whois/tou/ https://www.arin.net/resources/registry/whois/tou/" &&
     result.netRange == '128.116.0.0 - 128.116.127.255' &&
@@ -26,7 +26,7 @@ module.exports = async function(ip){
     ){
         return true
     }else{
-        console.log(result)
+        
         return false
     }
 }
