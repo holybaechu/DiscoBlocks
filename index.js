@@ -1,6 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const discord = require('discord.js');
+const mongoose = require('mongoose');
+const axios = require('axios');
 
 const config = require('./config.js');
 
@@ -49,4 +51,9 @@ app.listen(port, function () {
     console.log('Listening on port ' + port);
 })
 
+setInterval(function() {
+    axios.get('https://discoblocks.herokuapp.com/')
+}, 25 * 60 * 1000);
+
 client.login(config['discord-token'])
+mongoose.connect(config.mongoURI, {useNewUrlParser: true});
