@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const globalsModule = require('../../globals.js');
+const globalsModule = process.env
 const ipChecker = require('../../functions/checkIsRobloxIP.js');
 
 router.get('/', async function(req, res) {

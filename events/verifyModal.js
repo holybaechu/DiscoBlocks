@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const globalsModule = require('../globals.js');
+const globalsModule = process.env
 
 module.exports = {
     event: "interactionCreate",
