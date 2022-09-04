@@ -1,5 +1,4 @@
 const discord = require('discord.js');
-const globalsModule = process.env
 
 module.exports = {
     event: "interactionCreate",
@@ -7,7 +6,7 @@ module.exports = {
     execute: async function(client, interaction) {
         if (interaction.type !== discord.InteractionType.ModalSubmit) return;
         if (interaction.customId === 'verifyModal') {
-            globalsModule.verifyQueue[interaction.fields.getField('plrName').value] = interaction.user
+            global.verifyQueue[interaction.fields.getField('plrName').value] = interaction.user
 
             await interaction.reply({ content: `Click the ${"`✅ Verify`"} button and join to game follow to instructions to verify your account!`, components: [new discord.ActionRowBuilder()
                 .addComponents(
