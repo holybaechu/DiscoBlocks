@@ -25,8 +25,5 @@ module.exports = async function(ip){
     result.orgTechRef == 'https://rdap.arin.net/registry/entity/OPERA503-ARIN'
     ){
         return true
-    }else{
-        console.log(result)
-        return false
     }
 }
