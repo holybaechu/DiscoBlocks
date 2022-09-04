@@ -26,6 +26,7 @@ module.exports = async function(ip){
     ){
         return true
     }else{
+        console.warn(result)
         return false
     }
 }
