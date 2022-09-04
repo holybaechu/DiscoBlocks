@@ -11,6 +11,8 @@ router.get('/', async function(req, res) {
         if (globalsModule.verifyQueue[usernameToGet]) {
             globalsModule.verifyQueue[usernameToGet].createDM(true).send("You are verified!")
             res.json({success: true})
+        }else{
+            res.status(400).json({ success: false, errors: [{message: 'username is not in the queue.'}]})
         }
     }else{
         res.status(400).json({success: false, errors: [{message: "This ip is not seems to be allowed to access this api."}]})
