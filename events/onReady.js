@@ -1,7 +1,7 @@
 const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 const fs = require('fs');
-const globalsModule = process.env
+const globalsModule = global
 
 const config = require('../config.js');
 

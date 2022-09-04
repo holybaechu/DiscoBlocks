@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ipChecker = require('../../functions/checkIsRobloxIP.js');
-const globalsModule = process.env;
+const globalsModule = global;
 
 router.get('/', async function(req, res) {
     var usernameToGet = req.query.username
