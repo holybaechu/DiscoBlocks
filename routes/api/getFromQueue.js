@@ -4,13 +4,12 @@ const ipChecker = require('../../functions/checkIsRobloxIP.js');
 
 router.get('/', async function(req, res) {
     var usernameToGet = req.query.username
-    if (!ipChecker(req.headers['x-forwarded-for'] || req.socket.remoteAddress)){console.log('8'); res.status(400).json({success: false, errors: [{message: "This ip is not seems to be allowed to access this api."}]}); return;}
-    if (!usernameToGet) {console.log('9'); res.status(400).json({ success: false, errors: [{message: 'username could not be parsed from requset.'}]}) }
+    if (!ipChecker(req.headers['x-forwarded-for'] || req.socket.remoteAddress)){res.status(400).json({success: false, errors: [{message: "This ip is not seems to be allowed to access this api."}]}); return;}
+    if (!usernameToGet) {res.status(400).json({ success: false, errors: [{message: 'username could not be parsed from requset.'}]}) }
 
     if (global.verifyQueue[usernameToGet]) {
         res.json({ success: true, data: {tag: global.verifyQueue[usernameToGet].tag} })
     }else{
-        console.log('14')
         res.status(400).json({ success: false, errors: [{message: 'username is not in the queue.'}]})
     }
 });
