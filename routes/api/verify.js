@@ -4,6 +4,7 @@ const ipChecker = require('../../functions/checkIsRobloxIP.js');
 const globalsModule = require('../../globals.js');
 
 router.get('/', async function(req, res) {
+    var usernameToGet = req.query.username
     if (!usernameToGet) { res.status(400).json({ success: false, errors: [{message: 'username could not be parsed from requset.'}]}) } 
 
      // Checking is the real roblox server
