@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const ipChecker = require('../../functions/checkIsRobloxIP.js');
-const globalsModule = global;
 
 router.get('/', async function(req, res) {
     var usernameToGet = req.query.username
@@ -9,8 +8,8 @@ router.get('/', async function(req, res) {
 
      // Checking is the real roblox server
     if (ipChecker(req.headers['x-forwarded-for'] || req.socket.remoteAddress) == true){
-        if (globalsModule.verifyQueue[usernameToGet]) {
-            globalsModule.verifyQueue[usernameToGet].createDM(true).send("You are verified!")
+        if (global.verifyQueue[usernameToGet]) {
+            global.verifyQueue[usernameToGet].createDM(true).send("You are verified!")
             res.json({success: true})
         }else{
             res.status(400).json({ success: false, errors: [{message: 'username is not in the queue.'}]})

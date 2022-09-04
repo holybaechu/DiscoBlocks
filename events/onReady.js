@@ -1,7 +1,6 @@
 const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 const fs = require('fs');
-const globalsModule = global
 
 const config = require('../config.js');
 
@@ -12,7 +11,7 @@ module.exports = {
     once: true,
     execute: async function(client) {
         client.commands = {}
-        globalsModule.verifyQueue = {}
+        global.verifyQueue = {}
 
         let slashCommandData = [];
         for(const file of fs.readdirSync(`./commands/`).filter(file => file.endsWith('.js'))) {
