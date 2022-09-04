@@ -11,6 +11,7 @@ router.get('/', async function(req, res) {
     if (globalsModule.verifyQueue[usernameToGet]) {
         res.json({ success: true, data: {tag: globalsModule.verifyQueue[usernameToGet].tag} })
     }else{
+        console.log('A')
         res.status(400).json({ success: false, errors: [{message: 'username is not in the queue.'}]})
     }
 });
