@@ -3,6 +3,8 @@ const fs = require('fs');
 const discord = require('discord.js');
 const mongoose = require('mongoose');
 const axios = require('axios');
+const cookieParser = require('cookie-parser')
+const csurf = require('csurf')
 
 const config = require('./config.js');
 
@@ -41,6 +43,18 @@ function refreshRoutes(path) {
             
     }
 })();
+
+//globals
+global.verifyQueue = {}
+
+//Security settings
+// csrf
+app.use(cookieParser())
+const csrf = csurf({ cookie: true });
+app.use(csrf)
+
+app.use(require('helmet')());
+app.disable('x-powered-by');
 
 refreshRoutes("./routes")
 
