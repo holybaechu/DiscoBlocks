@@ -45,6 +45,7 @@ function refreshRoutes(path) {
 })();
 
 //globals
+global.setupQueue = {}
 global.verifyQueue = {}
 
 //Security settings
@@ -71,3 +72,24 @@ setInterval(function() {
 
 client.login(config['discord-token'])
 mongoose.connect(config.mongoURI, {useNewUrlParser: true});
+
+async function exitHandler(options){
+    console.warn(options)
+    process.exit()
+}
+
+process.on('exit', async (...a) => {
+    await exitHandler(a)
+});
+process.on('SIGINT', async (...a) => {
+    await exitHandler(a)
+});
+process.on('SIGUSR1', async (...a) => {
+    await exitHandler(a)
+});
+process.on('SIGUSR2', async (...a) => {
+    await exitHandler(a)
+});
+process.on('uncaughtException', async (...a) => {
+    await exitHandler(a)
+});

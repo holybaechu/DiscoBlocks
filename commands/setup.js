@@ -6,9 +6,39 @@ module.exports = {
         .setName('setup')
         .setDescription('Use this command to configure/setup your bot!'),
     async execute(client, interaction) {
-        // Embed testings
-        const embed = new discord.EmbedBuilder()
-            .setColor(discord.Colors.Aqua)
-        interaction.reply({embeds: [embed]})
+        global.setupQueue[interaction.guildId] = {
+            
+        }
+
+        interaction.reply({embeds: [
+            new discord.EmbedBuilder()
+                .setColor(discord.Colors.Blue)
+                .setTitle("Setup Process 1/1")
+                .setDescription("Would you like to add verify role or select existing verify role?")], components: [new discord.ActionRowBuilder()
+                    .addComponents([
+                        new discord.SelectMenuBuilder()
+                            .setCustomId("setup-p1-selectmenu")
+                            .setPlaceholder("Noting selected")
+                            .addOptions(
+                                {
+                                    label: "Add verify role",
+                                    value: "addRole"
+                                },
+                                {
+                                    label: "Select existing role",
+                                    value: "selectRole"
+                                }
+                            ),
+                    ])
+            ,new discord.ActionRowBuilder()
+                .addComponents([
+                    new discord.ButtonBuilder()
+                        .setCustomId("setup-p1-submitbutton")
+                        .setLabel("Submit")
+                        .setEmoji('✅')
+                        .setStyle(discord.ButtonStyle.Success)
+                ])
+            ]
+        })
     }
 }

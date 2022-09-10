@@ -1,3 +1,5 @@
+const discord = require("discord.js")
+
 module.exports = {
     event: "interactionCreate",
     once: false,
@@ -15,7 +17,7 @@ module.exports = {
                     console.log(err);
 
                     const embed = new discord.MessageEmbed()
-                        .setColor('#ff0000')
+                        .setColor(discord.Colors.Red)
                         .setTitle('Error')
                         .setDescription(`An error occurred while executing the command.`)
                         .setFooter({ text: interaction.member.nickname || interaction.user.username, iconURL: interaction.member.avatarURL() || interaction.user.avatarURL() })
