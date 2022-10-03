@@ -18,6 +18,6 @@
     "fs": "^0.0.1-security",
     "helmet": "^6.0.0",
     "mongoose": "^6.5.4",
-    "whois-json": "^2.0.4"
+    "whois-json": "^2.1.0"
   }
 }
